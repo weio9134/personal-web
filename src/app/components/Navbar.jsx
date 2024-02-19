@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { Bars3Icon, XmarkIcon } from '@heroicons/react/24/solid'
 import Menu from './Menu'
+import Image from 'next/image'
 
 
 const Navbar = () => {
@@ -24,8 +25,14 @@ const Navbar = () => {
   return (
     <nav className='fixed top-0 py-5 left-5 right-5 z-10 bg-[#121212] bg-opacity-85'>
       <div className='flex flex-wrap items-center justify-between mx-auto px-4 py-2'>
-        <Link href="/" className='text-xl md:text-3xl text-white font-semibold'> 
-          Home 
+        <Link href="/" className='text-xl md:text-3xl text-white font-semibold pl-5'> 
+          <Image 
+            src='/tp_logo.png'
+            width={85}
+            height={85}
+            alt="home logo"
+          />
+          {/* Home  */}
         </Link>
 
         <div className='mobile-menu block md:hidden dropdown dropdown-bottom dropdown-end'>
