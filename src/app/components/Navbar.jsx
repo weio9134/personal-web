@@ -1,36 +1,58 @@
 "use client"
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { Bars3Icon, XmarkIcon } from '@heroicons/react/24/solid'
+import { Bars3Icon } from '@heroicons/react/24/solid'
 import Menu from './Menu'
 import Image from 'next/image'
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
 const Navbar = () => {
+  // toggle dropdown menu
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
+  // toggle click away from dropdown menu
   useEffect(() => {
     const handleOutSideClick = (event) => {
       setOpen(false);
     };
-
     window.addEventListener("mousedown", handleOutSideClick);
-
     return () => {
       window.removeEventListener("mousedown", handleOutSideClick);
     };
   }, [ref]);
 
+  // toggle hiding navbar
+  gsap.registerPlugin(ScrollTrigger);
+  const navbarRef = useRef(null)
+  useEffect(() => {
+    const showNav = gsap.fromTo(
+    navbarRef.current, {
+      opacity: 0,
+    }, {
+      opacity: 1,
+      duration: 0.4
+    }).progress(1);
+
+    ScrollTrigger.create({
+        start: "top top",
+        end: "max",
+        onUpdate: (self) => { self.direction === -1 ? showNav.play() : showNav.reverse() }
+      });
+    }, [])
+
+
   return (
-    <nav className='fixed top-0 py-5 left-5 right-5 z-10 bg-[#121212] bg-opacity-85'>
+    <nav ref={navbarRef} className='fixed top-0 py-5 pb-0 left-5 right-5 z-10 bg-[#121212] bg-opacity-95 active'>
       <div className='flex flex-wrap items-center justify-between mx-auto px-4 py-2'>
         <Link href="/" className='text-xl md:text-3xl text-white font-semibold pl-5'> 
           <Image 
             src='/tp_logo.png'
             width={85}
             height={85}
-            alt="home logo"
+            alt="logo"
           />
           {/* Home  */}
         </Link>
