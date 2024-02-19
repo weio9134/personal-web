@@ -58,7 +58,7 @@ const AboutSection = () => {
           </p>
         </div>
 
-        <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
+        <div className="mt-4 md:mt-0 text-left flex flex-col h-full pl-20">
           <div className="flex flex-row justify-start mt-8">
             <Tab
               selectTab={() => handleTabChange("skills")}
