@@ -45,7 +45,7 @@ const Navbar = () => {
 
 
   return (
-    <nav ref={navbarRef} className='fixed top-0 py-5 pb-0 left-5 right-5 z-10 bg-[#121212] bg-opacity-95 active'>
+    <nav ref={navbarRef} className='fixed top-0 py-5 pb-0 left-5 right-5 z-10 bg-opacity-95 active'>
       <div className='flex flex-wrap items-center justify-between mx-auto px-4 py-2'>
         <Link href="/" className='text-xl md:text-3xl text-white font-semibold pl-5'> 
           <Image 

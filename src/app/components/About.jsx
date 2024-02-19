@@ -1,6 +1,5 @@
 "use client";
 import React, { useTransition, useState } from "react";
-import Image from "next/image";
 import Tab from "./Tab";
 
 const SECTIONS = [
@@ -23,20 +22,18 @@ const SECTIONS = [
     id: "education",
     content: (
       <ul className="list-disc pl-2">
-        <li> Cornell University, 2026</li>
+        <li> Cornell University, Bachelor's of Science, 2026</li>
       </ul>
     ),
   },
-  // {
-  //   title: "Certifications",
-  //   id: "certifications",
-  //   content: (
-  //     <ul className="list-disc pl-2">
-  //       <li>AWS Cloud Practitioner</li>
-  //       <li>Google Professional Cloud Developer</li>
-  //     </ul>
-  //   ),
-  // },
+  {
+    title: "Activities",
+    id: "activities",
+    content: (
+      <ul className="list-disc pl-2">
+      </ul>
+    ),
+  },
 ];
 
 const AboutSection = () => {
@@ -73,6 +70,11 @@ const AboutSection = () => {
               active={tab === "education"}
               children={"Education"}
             />
+            {/* <Tab
+              selectTab={() => handleTabChange("activities")}
+              active={tab === "activities"}
+              children={"Activities"}
+            /> */}
           </div>
           <div className="mt-8">
             {SECTIONS.find((t) => t.id === tab).content}
