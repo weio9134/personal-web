@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { Bars3Icon, XmarkIcon } from '@heroicons/react/24/solid'
 import Menu from './Menu'
@@ -7,16 +7,29 @@ import Menu from './Menu'
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const handleOutSideClick = (event) => {
+      setOpen(false);
+    };
+
+    window.addEventListener("mousedown", handleOutSideClick);
+
+    return () => {
+      window.removeEventListener("mousedown", handleOutSideClick);
+    };
+  }, [ref]);
 
   return (
-    <nav className='fixed top-5 left-5 right-5 z-10 bg-[#121212] bg-opacity-100'>
+    <nav className='fixed top-0 py-5 left-5 right-5 z-10 bg-[#121212] bg-opacity-85'>
       <div className='flex flex-wrap items-center justify-between mx-auto px-4 py-2'>
         <Link href="/" className='text-xl md:text-3xl text-white font-semibold'> 
           Home 
         </Link>
 
         <div className='mobile-menu block md:hidden dropdown dropdown-bottom dropdown-end'>
-          <div tabIndex={0} className="m-1">
+          <div tabIndex={0} className="m-1" ref={ref}>
             { !open ? 
               (
                 <button onClick={() => setOpen(true)} className='btn text-slate-200 flex items-center border rounded border-slate-200 hover:text-white hover:border-white'> 
@@ -35,7 +48,7 @@ const Navbar = () => {
                 <ul tabIndex={0} className="flex dropdown-content z-[1] menu shadow bg-base-100 rounded-box w-52">
                  <Menu />
                 </ul>
-              ) : (null)
+              ) : null
             }
           </div>
         </div>
