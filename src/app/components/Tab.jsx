@@ -6,13 +6,13 @@ const variants = {
   active: { width: "calc(100% - 0.75rem)" },
 };
 
-const Tab = ({ active, selectTab, children }) => {
+const Tab = ({ active, selectTab, text }) => {
   const buttonClasses = active ? "text-white underline" : "text-[#ADB7BE]";
 
   return (
     <button onClick={selectTab}>
       <p className={`mr-3 font-semibold hover:text-white ${buttonClasses}`}>
-        {children}
+        {text}
       </p>
       <motion.div
         animate={active ? "active" : "default"}
