@@ -39,7 +39,7 @@ const Hero = () => {
           </div>
 
           <p className='text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6'>
-            Welcome to my website! 
+            Welcome to my (WIP) website! 
           </p>
 
           <div className='sm:flex flex-row place-self-center items-center justify-center'>

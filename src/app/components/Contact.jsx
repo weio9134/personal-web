@@ -30,6 +30,7 @@ const Contact = () => {
         </div>
 
         <div className="">
+          
         </div>
 
       </div>
