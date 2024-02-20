@@ -1,7 +1,6 @@
 "use client"
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import Menu from './Menu'
 import Image from 'next/image'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -43,6 +42,27 @@ const Navbar = () => {
         onUpdate: (self) => { self.direction === -1 ? showNav.play() : showNav.reverse() }
       });
     }, [])
+
+  const LinkStyle = "block py-2 pl-3 pr-4 text-white sm:text-xl rounded md:p-0 hover:text-white hover:underline"
+  const Menu = () => (
+    <>
+      <li>
+        <Link href={"#about"} className={LinkStyle}>
+          About
+        </Link>
+      </li>
+      <li>
+        <Link href={"#projects"} className={LinkStyle}>
+          Projects
+        </Link>
+      </li>
+      <li>
+        <Link href={"#contact"} className={LinkStyle}>
+          Contact
+        </Link>
+      </li>
+    </>
+  )
 
   return (
     <nav ref={navbarRef} className='fixed top-0 py-5 pb-0 left-5 right-5 z-10 bg-opacity-95 active'>
