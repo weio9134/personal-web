@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import GithubIcon from "../../../public/github.svg";
 import LinkedinIcon from "../../../public/linkedin.svg";
@@ -7,15 +7,22 @@ import MailIcon from "../../../public/mail.png";
 import Image from 'next/image';
 
 const Contact = () => {
-  const form = useRef();
+  // toggle email msg
+  const [show, setShow] = useState(false)
 
+  // email form
+  const form = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs.sendForm('service_cveqgwl', 'template_ziqf10l', form.current, {
         publicKey: '3D-TOwXCPuZCQLLOa',
-      }) 
+      }).then(
+        () => { setShow(true) },
+        (error) => { console.log('FAILED...', error.text) },
+      );
       e.target.reset()
   };
+
 
   return (
       <section className="text-white pt-10" id="contact">
@@ -57,15 +64,19 @@ const Contact = () => {
         <div className="w-[400]">
           <form id="email-form" ref={form} onSubmit={sendEmail} className='flex items-start flex-col w-full text-base'>
             <label className='mt-1'>Name</label>
-            <input type="text" name="user_name" className='bg-[#afd2e9] w-full h-35 pt-5 pb-5 pl-2 outline-none rounded-lg border-solid border-1 focus:border-2 text-black border-white'/>
+            <input type="text" name="user_name" className='bg-[#B7C9F2] w-full h-35 pt-5 pb-5 pl-2 outline-none rounded-lg border-solid border-1 focus:border-2 text-black border-white'/>
 
             <label className='mt-1'>Email</label>
-            <input type="email" name="user_email" className='bg-[#afd2e9] p-2 outline-none rounded-lg border-solid border-1 focus:border-2 text-black border-white'/>
+            <input type="email" name="user_email" className='bg-[#B7C9F2] p-2 outline-none rounded-lg border-solid border-1 focus:border-2 text-black border-white'/>
 
             <label className='mt-1'>Message</label>
-            <textarea name="message" className='bg-[#afd2e9] w-full min-h-[100] pt-5 pb-5 pl-2 outline-none border-r-5 rounded-lg border-solid border-1 focus:border-2 text-black border-white'/>
+            <textarea name="message" className='bg-[#B7C9F2] w-full min-h-[100] pt-5 pb-5 pl-2 outline-none border-r-5 rounded-lg border-solid border-1 focus:border-2 text-black border-white'/>
             
-            <input type="submit" value="Send" className='mt-2 cursor-pointer btn border-none text-white bg-[#8ba1af]'/>
+            <div className='flex'>
+              <input type="submit" value="Send" className='mt-2 cursor-pointer btn border-none text-white bg-[#8ba1af]'/>
+              <div className={`text-base pl-10 pt-5 ${show ? "block" : "hidden"}`}> Thank you for the message! </div>
+            </div>
+            
           </form>
         </div>
 
