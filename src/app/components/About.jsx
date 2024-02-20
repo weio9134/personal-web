@@ -50,7 +50,7 @@ const AboutSection = () => {
         <div>
           <h2 className="text-4xl font-bold text-white mb-4"> About Me </h2>
           <p className="text-base lg:text-lg">
-            I'm a current student with a passion for web development and ML. 
+            I'm a current Cornell student with a passion for web development and ML. 
             I'm a quick learner and always looking for ways to expand my knowledge and skill set. 
             I am a team player, always excited to work with others to create amazing applications!
           </p>

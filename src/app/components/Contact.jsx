@@ -57,13 +57,13 @@ const Contact = () => {
         <div className="w-[400]">
           <form id="email-form" ref={form} onSubmit={sendEmail} className='flex items-start flex-col w-full text-base'>
             <label className='mt-1'>Name</label>
-            <input type="text" name="user_name" className='bg-[#afd2e9] w-full h-35 pt-5 pb-5 pl-2 outline-none rounded-lg border-solid border-1 focus:border-2 text-black'/>
+            <input type="text" name="user_name" className='bg-[#afd2e9] w-full h-35 pt-5 pb-5 pl-2 outline-none rounded-lg border-solid border-1 focus:border-2 text-black border-white'/>
 
             <label className='mt-1'>Email</label>
-            <input type="email" name="user_email" className='bg-[#afd2e9] p-2 outline-none rounded-lg border-solid border-1 focus:border-2 text-black'/>
+            <input type="email" name="user_email" className='bg-[#afd2e9] p-2 outline-none rounded-lg border-solid border-1 focus:border-2 text-black border-white'/>
 
             <label className='mt-1'>Message</label>
-            <textarea name="message" className='bg-[#afd2e9] w-full min-h-[100] pt-5 pb-5 pl-2 outline-none border-r-5 rounded-lg border-solid border-1 focus:border-2 text-black'/>
+            <textarea name="message" className='bg-[#afd2e9] w-full min-h-[100] pt-5 pb-5 pl-2 outline-none border-r-5 rounded-lg border-solid border-1 focus:border-2 text-black border-white'/>
             
             <input type="submit" value="Send" className='mt-2 cursor-pointer btn border-none text-white bg-[#8ba1af]'/>
           </form>

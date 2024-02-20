@@ -65,13 +65,13 @@ const Navbar = () => {
   )
 
   return (
-    <nav ref={navbarRef} className='fixed top-0 py-5 pb-0 left-5 right-5 z-10 bg-opacity-95 active'>
-      <div className='flex flex-wrap items-center justify-between mx-auto px-4 py-2'>
-        <Link href="/" className='text-xl md:text-3xl text-white font-semibold pl-5'> 
+    <nav ref={navbarRef} className='fixed pt-3 pb-2 left-10 right-10 z-10 bg-opacity-95 active rounded-badge'>
+      <div className='flex flex-wrap items-center justify-between mx-auto px-4 py-2 lg:pl-10'>
+        <Link href="/" className='text-xl md:text-3xl text-white font-semibold'> 
           <Image 
             src='/tp_logo.png'
-            width={85}
-            height={85}
+            width={100}
+            height={100}
             alt="logo"
           />
           {/* Home  */}
