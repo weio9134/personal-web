@@ -2,6 +2,7 @@
 import React, { useTransition, useState } from "react";
 import Tab from "./Tab";
 import Image from "next/image";
+import Shapes from "./Shapes.jsx"
 
 const sections = [
   {
@@ -49,13 +50,12 @@ const AboutSection = () => {
     <section className="text-white" id="about">
       <div className="md:grid md:grid-cols-2 items-center px-4 md:gap-10 sm:py-16 xl:px-16">
         <h2 className="md:col-span-2 text-4xl font-bold text-white mb-4"> About Me </h2>
-
-        <div className="w-full h-full bg-black">
-          {/* hi */}
+        <div className="w-full h-full mt-0 pt-0">
+          <Shapes />
         </div>
 
         <div className="w-full h-full md:col-start-2">
-          <div className="md:mt-0 text-left flex flex-col h-full place-self-center">
+          <div className="text-left flex flex-col h-full place-self-center">
             <p className="text-base lg:text-lg">
               I'm a current Cornell student with a passion for web development and ML. 
               I'm a quick learner and always looking for ways to expand my knowledge and skill set. 
