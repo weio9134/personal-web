@@ -9,20 +9,33 @@ import Image from 'next/image';
 const Contact = () => {
   // toggle email msg
   const [show, setShow] = useState(false)
+  const [showErr, setShowErr] = useState(false)
 
-  // email form
+  let state = {
+    name:"",
+    email:"",
+    msg:""
+  }
+  const changeState = (t, v) => {
+    if(t === "name") state.name = v
+    if(t === "email") state.email = v
+    if(t === "msg") state.msg = v
+  }
   const form = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
-    emailjs.sendForm('service_cveqgwl', 'template_ziqf10l', form.current, {
+    if(state.name !== "" && state.email !== "" && state.msg !== "")
+    {
+      emailjs.sendForm('service_cveqgwl', 'template_ziqf10l', form.current, {
         publicKey: '3D-TOwXCPuZCQLLOa',
-      }).then(
-        () => { setShow(true) },
-        (error) => { console.log('FAILED...', error.text) },
-      );
+      })
       e.target.reset()
+      setShow(true)
+      setShowErr(false)
+    } else {
+      setShowErr(true)
+    }
   };
-
 
   return (
       <section className="text-white pt-10" id="contact">
@@ -64,19 +77,19 @@ const Contact = () => {
         <div className="w-[400]">
           <form id="email-form" ref={form} onSubmit={sendEmail} className='flex items-start flex-col w-full text-base'>
             <label className='mt-1'>Name</label>
-            <input type="text" name="user_name" className='bg-[#B7C9F2] w-full h-35 pt-5 pb-5 pl-2 outline-none rounded-lg border-solid border-1 focus:border-2 text-black border-white'/>
+            <input onChange={e => changeState("name", e.currentTarget.value)} type="text" name="name" className='bg-[#B7C9F2] w-full h-35 pt-5 pb-5 pl-2 outline-none rounded-lg border-solid border-1 focus:border-2 text-black border-white'/>
 
             <label className='mt-1'>Email</label>
-            <input type="email" name="user_email" className='bg-[#B7C9F2] p-2 outline-none rounded-lg border-solid border-1 focus:border-2 text-black border-white'/>
+            <input onChange={e => changeState("email", e.currentTarget.value)} type="email" name="email" className='bg-[#B7C9F2] p-2 outline-none rounded-lg border-solid border-1 focus:border-2 text-black border-white'/>
 
             <label className='mt-1'>Message</label>
-            <textarea name="message" className='bg-[#B7C9F2] w-full min-h-[100] pt-5 pb-5 pl-2 outline-none border-r-5 rounded-lg border-solid border-1 focus:border-2 text-black border-white'/>
+            <textarea onChange={e => changeState("msg", e.currentTarget.value)}  name="message" className='bg-[#B7C9F2] w-full min-h-[100] pt-5 pb-5 pl-2 outline-none border-r-5 rounded-lg border-solid border-1 focus:border-2 text-black border-white'/>
             
             <div className='flex'>
               <input type="submit" value="Send" className='mt-2 cursor-pointer btn border-none text-white bg-[#8ba1af]'/>
               <div className={`text-base pl-10 pt-5 ${show ? "block" : "hidden"}`}> Thank you for the message! </div>
+              <div className={`text-base pl-10 pt-5 ${showErr ? "block" : "hidden"}`}> Please fill out the form before sending! </div>
             </div>
-            
           </form>
         </div>
 
